@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>突破指令</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0b; --surface: #121214; --surface-2: #1a1a1e; --fg: #f4f4f5;
+      --muted: #a1a1aa; --subtle: #71717a; --primary: #c8ccd4; --primary-fg: #0a0a0b;
+      --border: color-mix(in oklab, #f4f4f5 12%, transparent);
+      --border-strong: color-mix(in oklab, #f4f4f5 22%, transparent);
+      --left: #b7c9d4; --right: #d4cfc6; --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--fg);
+      font-family: "Noto Sans SC", "PingFang SC", system-ui, sans-serif; }
+    body { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; cursor: pointer; }
+    #app { max-width: 32rem; margin: 0 auto; min-height: 100dvh; padding: max(1rem, env(safe-area-inset-top)) 1.25rem max(1.25rem, env(safe-area-inset-bottom)); display: flex; flex-direction: column; }
+    h1 { font-size: 2.25rem; font-weight: 600; letter-spacing: -0.03em; margin: 0.75rem 0 0; }
+    .kicker { font-size: 0.75rem; letter-spacing: 0.18em; color: var(--subtle); text-transform: uppercase; }
+    .lead { color: var(--muted); font-size: 0.9375rem; line-height: 1.6; max-width: 28ch; margin-top: 0.75rem; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin-top: 2rem; padding: 1rem; border: 1px solid var(--border); background: var(--surface); border-radius: 24px; text-align: center; }
+    .stats b { display: block; font-family: ui-monospace, monospace; font-size: 1.125rem; font-weight: 500; }
+    .stats span { display: block; margin-top: 0.25rem; font-size: 0.6875rem; color: var(--subtle); }
+    .btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; border: 0; border-radius: var(--radius); height: 4rem; font-size: 1.125rem; font-weight: 500; }
+    .btn-primary { background: var(--primary); color: var(--primary-fg); }
+    .btn-sec { background: var(--surface); color: var(--fg); border: 1px solid var(--border); height: 3.5rem; font-size: 1rem; }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); height: 3.5rem; font-size: 1rem; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; }
+    .card { text-align: left; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.75rem 0.5rem; color: inherit; }
+    .card small { display: block; font-family: ui-monospace, monospace; color: var(--subtle); font-size: 0.75rem; }
+    .card b { display: block; margin-top: 0.25rem; font-weight: 500; font-family: ui-monospace, monospace; }
+    .card span { display: block; margin-top: 0.15rem; font-size: 0.75rem; color: var(--muted); }
+    .top { display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem; }
+    .top button { background: none; border: 0; color: var(--muted); padding: 0.5rem 0.25rem; }
+    .roles { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin-top: 1rem; padding: 0.75rem; border: 1px solid var(--border); background: var(--surface); border-radius: 16px; text-align: center; }
+    .roles .k { font-size: 0.6875rem; color: var(--subtle); }
+    .roles .v { font-family: ui-monospace, monospace; margin-top: 0.15rem; font-size: 0.875rem; }
+    .hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .dots { display: flex; gap: 0.5rem; }
+    .dot { height: 6px; width: 32px; border-radius: 99px; background: var(--surface-2); }
+    .dot.on { background: var(--primary); }
+    .dot.done { background: var(--border-strong); }
+    .word { font-size: 4.75rem; font-weight: 600; line-height: 1; letter-spacing: -0.03em; margin: 0.75rem 0 0; }
+    .left { color: var(--left); }
+    .right { color: var(--right); }
+    .panel { border: 1px solid var(--border); background: var(--surface); border-radius: 24px; padding: 1.25rem; }
+    .panel li { display: flex; justify-content: space-between; list-style: none; margin: 0.75rem 0; }
+    .panel ul { margin: 0; padding: 0; }
+    .actions { display: flex; flex-direction: column; gap: 0.75rem; margin-top: auto; padding-top: 1.5rem; }
+    .muted { color: var(--muted); }
+    .subtle { color: var(--subtle); }
+    .grow { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
